@@ -19,14 +19,15 @@
         </div>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="index.blade.php" class="nav-link px-2">ユーザー一覧</a></li>
-            <li><a href="player.blade.php" class="nav-link px-2 link-secondary">プレイヤー一覧</a></li>
-            <li><a href="item.blade.php" class="nav-link px-2">アイテム一覧</a></li>
-            <li><a href="have_item.blade.php" class="nav-link px-2">所持アイテム一覧</a></li>
+            <li><a href="/accounts/index/{account_id?}" class="nav-link px-2">ユーザー一覧</a></li>
+            <li><a href="/accounts/player" class="nav-link px-2 link-secondary">プレイヤー一覧</a></li>
+            <li><a href="/accounts/item" class="nav-link px-2">アイテム一覧</a></li>
+            <li><a href="/accounts/have_item" class="nav-link px-2">所持アイテム一覧</a></li>
         </ul>
 
         <div class="col-md-3 text-end">
-            <form method="post" action="login.blade.php">
+            <form method="post" action="{{url('accounts/doLogout')}}">
+                @csrf
                 <button type="submit" class="btn btn-outline-primary me-2">ログアウト</button>
                 <input type="hidden" name="action" value="doLogout">
             </form>
@@ -50,7 +51,7 @@
             <td>{{$player['level']}}</td>
             <td>{{$player['experience_point']}}</td>
             <td>{{$player['life']}}</td>
-        </tr>';
+        </tr>
     @endforeach
 </table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
